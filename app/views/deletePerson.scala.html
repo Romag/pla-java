@@ -1,0 +1,17 @@
+@import model.db.person.Person
+
+@import helper._
+
+@()
+@*
+
+    @main("Delete Person") {
+
+        @helper.form(action = routes.MyController.deletePerson) {
+            @helper.CSRF.formField
+
+            <input name="test" type="number" />
+
+            <button type="submit" formmethod="POST">Delete Person</button>
+        }
+    }*@

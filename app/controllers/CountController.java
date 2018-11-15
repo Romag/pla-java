@@ -1,6 +1,7 @@
 package controllers;
 
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 import services.Counter;
 
@@ -18,6 +19,8 @@ public class CountController extends Controller {
 
     private final Counter counter;
 
+    private static Integer answer = 42;
+
     @Inject
     public CountController(Counter counter) {
        this.counter = counter;
@@ -34,3 +37,5 @@ public class CountController extends Controller {
     }
 
 }
+
+

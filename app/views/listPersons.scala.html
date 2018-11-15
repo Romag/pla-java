@@ -1,0 +1,17 @@
+@import model.db.person.Person
+
+@(persons: List[Person], form: Form[Person])
+
+@main("Persons") {
+
+    <table>
+        <thead>
+            <tr><th>Id</th><th>Name</th><th>Age</th></tr>
+        </thead>
+        <tbody>
+            @for(p <- persons) {
+                <tr><td>@p.getId</td><td>@p.getName</td><td>@p.getAge</td></tr>
+            }
+        </tbody>
+    </table>
+}

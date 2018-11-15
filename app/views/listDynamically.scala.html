@@ -1,0 +1,27 @@
+@import model.db.person.Person
+
+@(persons: List[Person])
+
+@main("Persons") {
+
+    @*Jquery ajax load*@
+    <script src="@routes.Assets.versioned("javascripts/load2.js")" type="text/javascript" language="JavaScript"></script>
+    <script src="@routes.Assets.versioned("javascripts/delete.js")" type="text/javascript" language="JavaScript"></script>
+
+
+    <table id="personTable" data-current-rows="@persons.size()" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Update/Delete</th>
+            </tr>
+        </thead>
+        <tbody id="personTableBody">
+            @list(persons)
+        </tbody>
+    </table>
+
+    <button type="button" class="update btn">More</button>
+}

@@ -1,0 +1,21 @@
+@import helper._
+
+@import model.db.person.Person
+
+@(form: Form[Person])
+
+    @main("Add Person") {
+
+    @helper.form(routes.MyController.createPerson) {
+        @helper.CSRF.formField
+
+        @helper.inputText(form("name"))
+
+        @helper.inputText(form("age"))
+
+        <button type="submit" formmethod="POST">Create Person</button>
+    }
+}
+
+
+

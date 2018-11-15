@@ -1,6 +1,9 @@
 import com.google.inject.AbstractModule;
 import java.time.Clock;
+import java.util.concurrent.atomic.AtomicInteger;
 
+import com.google.inject.Provides;
+import com.google.inject.Scopes;
 import services.ApplicationTimer;
 import services.AtomicCounter;
 import services.Counter;
@@ -25,7 +28,11 @@ public class Module extends AbstractModule {
         // application starts.
         bind(ApplicationTimer.class).asEagerSingleton();
         // Set AtomicCounter as the implementation for Counter.
-        bind(Counter.class).to(AtomicCounter.class);
+        bind(Counter.class).to(AtomicCounter.class).in(Scopes.SINGLETON);
     }
 
+/*    @Provides
+    Counter counterProvider() {
+        return ()->0;
+    }*/
 }

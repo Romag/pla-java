@@ -1,0 +1,65 @@
+@import model.db.person.Person
+
+@(persons: List[Person])
+
+@for(p <- persons) {
+    @defining(p.getId()) { userId =>
+        <tr>
+            <td>@userId</td>
+            <td>@p.getName</td>
+            <td>@p.getAge</td>
+            <td>
+                <button type="button" class="btn" data-toggle="modal" data-target="#updateModal">
+                    <i class="fa fa-folder"></i>
+                </button>
+                <div class="modal fade" id="updateModal" role="dialog">
+                    <div class="modal-dialog modal-lg">
+
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Update Element?</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>*Update here*</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-info" data-save="">Update</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <button type="button" class="btn modal-open" data-toggle="modal" data-target="#deleteModal">
+                    <i class="fa fa-trash"></i>
+                </button>
+                <div class="modal fade" id="deleteModal" role="dialog">
+                    <div class="modal-dialog modal-lg">
+
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Delete Element @userId?</h4>
+                            </div>
+
+                            <div class="modal-footer">
+                                <form action="/deletePerson">
+                                    <input type="hidden" name="toDeleteId" value="@userId">
+                                    <button type="submit" class="btn btn-danger" id="modal-delete-button">
+                                        Delete
+                                    </button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </td>
+        </tr>
+    }
+}

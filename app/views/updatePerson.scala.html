@@ -1,0 +1,17 @@
+@import model.db.person.Person
+
+@(form: Form[Person])
+
+@main("Update Person") {
+    @helper.form(routes.MyController.updatePerson) {
+        @helper.CSRF.formField
+
+        @helper.inputText(form("id"))
+
+        @helper.inputText(form("name"))
+
+        @helper.inputText(form("age"))
+
+        <button type="submit" formmethod="post">Update Person</button>
+    }
+}

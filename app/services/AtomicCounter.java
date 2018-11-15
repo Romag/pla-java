@@ -16,11 +16,17 @@ import javax.inject.*;
 @Singleton
 public class AtomicCounter implements Counter {
 
-    private final AtomicInteger atomicCounter = new AtomicInteger();
+    private final AtomicInteger atomicCounter;
+
+    @Inject
+    AtomicCounter(AtomicInteger atomicCounter) {
+        this.atomicCounter = atomicCounter;
+    }
 
     @Override
     public int nextCount() {
-       return atomicCounter.getAndIncrement();
+        return atomicCounter.getAndIncrement();
     }
 
 }
+

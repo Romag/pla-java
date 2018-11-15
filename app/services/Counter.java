@@ -8,6 +8,7 @@ package services;
  * The {@link Modules} class binds this interface to the
  * {@link AtomicCounter} implementation.
  */
+@FunctionalInterface
 public interface Counter {
     int nextCount();
 }
